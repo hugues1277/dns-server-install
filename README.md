@@ -14,7 +14,6 @@ What is it doing ?
 * create apache site config file
 * enable site
 * reload apache > now, the http website is efficient
-
 * install let's encript if isn't installed
 * run let's encript for your domain name
 * install auto renewal script
