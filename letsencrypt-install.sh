@@ -35,7 +35,7 @@ sudo echo "
     DocumentRoot /var/www/$SITE_NAME
     ErrorLog ${APACHE_LOG_DIR}/$SITE_NAME-error.log
     CustomLog ${APACHE_LOG_DIR}/$SITE_NAME-access.log combined
-</VirtualHost>" > /etc/apache2/sites-available/test.conf
+</VirtualHost>" > /etc/apache2/sites-available/$SITE_NAME.conf
 
 sudo a2ensite $SITE_NAME.conf
 echo " - to disable site, use: sudo a2dissite $SITE_NAME.conf"
@@ -52,7 +52,9 @@ fi
 cd letsencrypt
 
 echo '
+############################################################
  - You can add your domain name and after, select option 2
+############################################################
 '
 
 ./certbot-auto -d $DOMAIN
