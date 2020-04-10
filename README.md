@@ -11,6 +11,7 @@ sudo ./letsencript.sh mon-site.hello.fr mon-site
 
 What is it doing ?
 * this script create folder /var/www/mon-site
+* add htaccess
 * create apache site config file
 * enable site
 * reload apache > now, the http website is efficient

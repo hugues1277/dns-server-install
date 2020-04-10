@@ -27,6 +27,11 @@ SITE_NAME=$2
 DOMAIN=$1
 
 mkdir -p /var/www/$SITE_NAME
+
+SCRIPT=`realpath $0`
+SCRIPTPATH=`dirname $SCRIPT`
+cp $SCRIPTPATH/.htaccess /var/www/$SITE_NAME
+
 # init apache
 sudo echo "
 <VirtualHost *:80>
@@ -35,6 +40,11 @@ sudo echo "
     DocumentRoot /var/www/$SITE_NAME
     ErrorLog ${APACHE_LOG_DIR}/$SITE_NAME-error.log
     CustomLog ${APACHE_LOG_DIR}/$SITE_NAME-access.log combined
+
+	# enable htaccess
+	<Directory /var/www/$SITE_NAME>
+		AllowOverride all
+	</Directory>
 </VirtualHost>" > /etc/apache2/sites-available/$SITE_NAME.conf
 
 sudo a2ensite $SITE_NAME.conf
@@ -52,9 +62,9 @@ fi
 cd letsencrypt
 
 echo '
-############################################################
- - You can add your domain name and after, select option 2
-############################################################
+###################
+ - select option 2
+###################
 '
 
 ./certbot-auto -d $DOMAIN
@@ -124,6 +134,7 @@ Your ssl is installed
 
 sudo crontab -e
 0 3 * * * /usr/local/sbin/le-renew $DOMAIN >> /var/log/le-renew.log
+
 "
 else
 	echo " - a error ocured"
