@@ -5,8 +5,8 @@ befor all, check if your domain targets your server address
 
 run
 ``` sh
-sudo ./letsencript.sh mon-site.fr mon-site
-sudo ./letsencript.sh mon-site.hello.fr mon-site
+sudo ./dns-server-install.sh mon-site.fr mon-site
+sudo ./dns-server-install.sh mon-site.hello.fr mon-site
 ```
 
 What is it doing ?
