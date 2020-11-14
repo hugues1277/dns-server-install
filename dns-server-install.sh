@@ -38,8 +38,8 @@ sudo echo "
     ServerName  $DOMAIN
     ServerAdmin webmaster@localhost
     DocumentRoot /var/www/$SITE_NAME
-    ErrorLog ${APACHE_LOG_DIR}/$SITE_NAME-error.log
-    CustomLog ${APACHE_LOG_DIR}/$SITE_NAME-access.log combined
+    ErrorLog /var/log/apache2/$SITE_NAME-error.log
+    CustomLog /var/log/apache2/$SITE_NAME-access.log combined
 
 	# enable htaccess
 	<Directory /var/www/$SITE_NAME>
